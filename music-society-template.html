@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ценные альбомы для общества</title>
+  <meta name="description" content="Учебный сайт о музыкальных альбомах, которые оказали заметное влияние на общество и культуру." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --color-bg: #f7f6f2;
+      --color-surface: #f9f8f5;
+      --color-surface-2: #fbfbf9;
+      --color-border: #d4d1ca;
+      --color-text: #28251d;
+      --color-text-muted: #6f6c65;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-text-inverse: #f9f8f4;
+      --accent-cyan: #00d9ff;
+      --accent-pink: #ff4fa3;
+      --accent-gold: #f5c451;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-md: 0 6px 20px rgba(0,0,0,0.08);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', Arial, sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #201f1d;
+      --color-border: #393836;
+      --color-text: #e1dfda;
+      --color-text-muted: #a4a29b;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #227f8b;
+      --color-text-inverse: #171614;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.25);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.65;
+      background: var(--color-bg);
+      color: var(--color-text);
+      transition: background .2s, color .2s;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    button { font: inherit; border: none; background: none; cursor: pointer; }
+
+    .site-shell { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--color-border);
+      background: var(--color-surface);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .logo { display: flex; align-items: center; gap: .8rem; margin-bottom: 2rem; }
+    .logo svg { width: 40px; height: 40px; color: var(--accent-cyan); flex-shrink: 0; }
+    .logo-text { font-family: var(--font-display); font-size: 1.1rem; line-height: 1.2; }
+    nav { display: flex; flex-direction: column; gap: .35rem; }
+    nav a {
+      padding: .7rem 1rem;
+      border-radius: var(--radius-lg);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      transition: background .15s, color .15s, transform .15s;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      min-height: 44px;
+    }
+    nav a .nav-num {
+      font-size: .7rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--color-border);
+      color: var(--color-text-muted);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      transition: background .15s, color .15s;
+    }
+    nav a:hover { background: var(--color-surface-2); color: var(--color-text); transform: translateX(2px); }
+    nav a.active {
+      background: color-mix(in srgb, var(--accent-cyan) 14%, var(--color-surface));
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+    nav a.active .nav-num { background: var(--accent-pink); color: #fff; }
+    .sidebar-spacer { flex: 1; }
+    .sidebar-credit {
+      margin-top: 1.5rem;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border);
+      padding-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .content { padding: 2.5rem 2.5rem 4rem; max-width: 1040px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .4rem .85rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--accent-pink) 12%, var(--color-surface));
+      color: var(--accent-pink);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: var(--color-surface);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      transition: background .15s;
+    }
+    .theme-toggle:hover { background: var(--color-surface-2); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(1.75rem, 4vw, 3.5rem);
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--accent-cyan) 16%, transparent), transparent 30%),
+        radial-gradient(circle at bottom left, color-mix(in srgb, var(--accent-pink) 12%, transparent), transparent 28%),
+        linear-gradient(135deg, var(--color-surface-2) 0%, var(--color-surface) 100%);
+      border: 1px solid var(--color-border);
+      border-radius: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: 20px;
+      width: 160px;
+      height: 160px;
+      border: 1px solid color-mix(in srgb, var(--accent-cyan) 40%, var(--color-border));
+      border-radius: 24px;
+      transform: rotate(18deg);
+      opacity: .35;
+    }
+    .hero .badge { margin-bottom: 1.2rem; }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      line-height: 1.08;
+      margin-bottom: 1rem;
+      max-width: 18ch;
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 1;
+    }
+    .hero p {
+      max-width: 68ch;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      position: relative;
+      z-index: 1;
+    }
+
+    .cards, .roles-grid, .impact-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .card, .impact-item, .role-card, .page-link, .album-block {
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .card:hover, .impact-item:hover, .role-card:hover, .page-link:hover, .album-block:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .card-icon { font-size: 1.5rem; margin-bottom: .75rem; }
+    .card h3 { font-size: 1rem; font-weight: 600; margin-bottom: .5rem; }
+    .card p { color: var(--color-text-muted); font-size: var(--text-sm); }
+
+    .section { margin-top: 2.5rem; }
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      margin-bottom: .75rem;
+      letter-spacing: -0.02em;
+    }
+    .section > p, .section-lead {
+      max-width: 72ch;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+    .section-lead { margin-bottom: 1.25rem; }
+
+    .page-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.25rem; }
+    .page-link {
+      padding: 1.25rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface);
+    }
+    .page-link:hover { border-color: var(--accent-cyan); }
+    .page-link strong { display: block; margin-bottom: .3rem; font-size: var(--text-sm); color: var(--color-text); }
+    .page-link span { color: var(--color-text-muted); font-size: var(--text-xs); }
+
+    .album-block {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-top: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .team-covers-image {
+  margin-top: 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+        }
+
+    .team-covers-image img {
+  width: 100%;
+  display: block;
+  border-radius: calc(var(--radius-xl) - 0.25rem);
+  object-fit: cover;
+      }
+    .album-inner { display: grid; grid-template-columns: 260px 1fr; gap: 0; }
+    .album-cover { position: relative; background: var(--color-surface-2); }
+    .album-cover img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 320px; }
+    .album-cover-placeholder {
+      width: 100%;
+      min-height: 320px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent-cyan) 18%, var(--color-surface)), var(--color-surface-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: var(--accent-cyan);
+      opacity: .5;
+    }
+    .album-body { padding: 2rem; }
+    .album-num {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 1rem;
+    }
+    .album-title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .album-meta { display: flex; flex-direction: column; gap: .9rem; }
+    .album-meta p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; }
+    .album-meta p strong { color: var(--color-text); }
+    .review-box {
+      background: var(--color-surface-2);
+      border-top: 1px solid color-mix(in srgb, var(--accent-pink) 28%, var(--color-border));
+      padding: 1.25rem 1.5rem;
+    }
+    .review-box p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: .75rem;
+    }
+    .review-box p:last-child { margin-bottom: 0; }
+
+    .impact-item, .role-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+    }
+    .impact-item .impact-icon, .role-icon { font-size: 1.75rem; margin-bottom: .75rem; }
+    .impact-item h3, .role-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: .5rem; }
+    .impact-item p, .role-card p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.65; }
+    .role-card { display: flex; flex-direction: column; gap: .35rem; }
+
+    .impact-quote {
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent-cyan) 7%, var(--color-surface)), var(--color-surface));
+      border: 1px solid color-mix(in srgb, var(--accent-cyan) 22%, var(--color-border));
+      border-radius: var(--radius-xl);
+      padding: 2rem 2.5rem;
+      margin-top: 2rem;
+    }
+    .impact-quote p {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-style: italic;
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+    .impact-quote cite {
+      display: block;
+      margin-top: .75rem;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      font-style: normal;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    footer {
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+    }
+
+    @media (max-width: 900px) {
+      .site-shell { grid-template-columns: 1fr; }
+      .sidebar {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .5rem;
+        padding: 1rem 1.5rem;
+      }
+      .logo { margin-bottom: 0; }
+      .sidebar-spacer, .sidebar-credit { display: none; }
+      nav { flex-direction: row; flex-wrap: wrap; gap: .25rem; }
+      nav a { padding: .5rem .75rem; font-size: .8rem; }
+      .content { padding: 1.5rem; }
+      .cards, .roles-grid, .impact-list, .page-links { grid-template-columns: 1fr; }
+      .album-inner { grid-template-columns: 1fr; }
+      .album-cover img { min-height: 220px; max-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <div class="logo">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="3"/>
+          <path d="M24 18v25.5c0 4.5 3.4 7.5 7.5 7.5s7.5-3 7.5-7.5V24l11-3v18.5c0 4.5-3.4 7.5-7.5 7.5S35 44 35 39.5c0-4 3-7 7-7 1.7 0 3.1.4 4.5 1.2V16L24 18Z" fill="currentColor" opacity=".9"/>
+        </svg>
+        <div>
+          <div class="logo-text">Music & Society</div>
+        </div>
+      </div>
+
+      <nav aria-label="Разделы сайта">
+        <a href="#home" class="active"><span class="nav-num">1</span>Главная</a>
+        <a href="#albums"><span class="nav-num">2</span>Альбомы</a>
+        <a href="#impact"><span class="nav-num">3</span>Влияние</a>
+        <a href="#usmusic"><span class="nav-num">4</span>Наши предпочтения</a>
+
+        <a href="#roles"><span class="nav-num">5</span>Роли команды</a>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-credit">Учебный сайт о музыке.<br>HTML · CSS · JavaScript</div>
+    </aside>
+
+    <main class="content" id="main">
+      <div class="topbar">
+        
+        <button class="theme-toggle" data-theme-toggle aria-label="Сменить тему">☀️</button>
+      </div>
+
+      <section id="home" class="page active">
+        <div class="hero">
+          <div class="badge">Тема проекта — музыка</div>
+          <h1>Ценные альбомы для общества</h1>
+          <p>Учебный сайт о том, как музыкальные альбомы влияют на культуру, общественные настроения, личную память и восприятие целых эпох. Мы разобрали три значимые отечественные пластинки и объяснили, почему музыка — это не только развлечение, но и форма общественного высказывания.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">🎵</div>
+            <h3>Почему тема важна</h3>
+            <p>Музыка отражает эпоху и помогает обществу осмыслять такие темы, как свобода, идентичность, память и социальные перемены.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">📀</div>
+            <h3>Что разобрано на сайте</h3>
+            <p>Три альбома российских исполнителей — Хаски, Boulevard Depo и Saluki — с рецензиями, обложками и анализом общественного значения.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🧭</div>
+            <h3>Структура проекта</h3>
+            <p>Пять разделов: введение, каталог альбомов, влияние музыки, наши предпочтения, инструменты создания и роли команды.</p>
+          </article>
+        </div>
+
+        <div class="section">
+          <h2>Разделы сайта</h2>
+          <p class="section-lead">Переходите в любой раздел через боковое меню или по ссылкам ниже.</p>
+          <div class="page-links">
+            <a class="page-link" href="#albums"><strong>Страница 2 — Альбомы</strong><span>Партизан, ФУТУРОАРХАИКА, WILD EA$T с описаниями и рецензиями.</span></a>
+            <a class="page-link" href="#impact"><strong>Страница 3 — Влияние на общество</strong><span>Почему музыкальные альбомы имеют значение за пределами хит-парадов.</span></a>
+            <a class="page-link" href="#usmusic"><strong>Страница 4 — Наши предпочтения</strong><span>Личный взгляд команды на музыку, атмосферу и выбор альбомов.</span></a>
+            <a class="page-link" href="#roles"><strong>Страница 5 — Роли команды</strong><span>Кто за что отвечал при создании проекта.</span></a>
+          </div>
+        </div>
+
+        <footer>Учебный сайт — «Ценные альбомы для общества». Данные взяты с сайта РЗТ.</footer>
+      </section>
+
+      <section id="albums" class="page">
+        <div class="hero">
+          <div class="badge">Каталог проекта</div>
+          <h1>Альбомы, которые стали общественно значимыми</h1>
+          <p>Три пластинки российских исполнителей, вышедших в разное время, но объединённых одним — каждая из них оказалась больше, чем просто музыкой. Данные взяты с сайта РЗТ и дополнены вручную.</p>
+        </div>
+
+        <div class="album-block">
+          <div class="album-inner">
+            <div class="album-cover">
+              <img src="./photo1.jpg" alt="Обложка альбома Партизан — Хаски" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="album-cover-placeholder" style="display:none">🎙️</div>
+            </div>
+            <div class="album-body">
+              <div class="album-num">Альбом № 1</div>
+              <div class="album-title">Партизан — Хаски</div>
+              <div class="album-meta">
+                <p><strong>Исполнитель:</strong> Хаски (Дмитрий Кузнецов)</p>
+                <p><strong>Жанр:</strong> Рэп, авторская песня, экспериментальный хип-хоп</p>
+                <p><strong>Краткое описание:</strong> «Партизан» — альбом, в котором Хаски говорит прежде всего о внутреннем мире человека. Поэтические тексты, живая подача и образы, отсылающие к русской литературе и народной традиции, сделали эту пластинку явлением, выходящим за рамки обычного рэп-релиза.</p>
+                <p><strong>Общественное значение:</strong> Альбом обострил дискуссию о свободе слова и цензуре в российской музыке. Хаски стал символом независимой сцены, а его концерты неоднократно отменялись — что только усилило резонанс вокруг пластинки.</p>
+                <p><strong>Заголовок рецензии:</strong> «Душа на сцене»</p>
+                <p><strong>Автор рецензии:</strong> blitzzzkrieggg (РЗТ)</p>
+                <p><strong>О рецензии:</strong> Автор описывает долгое ожидание нового альбома как личный и эмоционально тяжёлый путь. Главная мысль рецензии — ценность «Партизана» раскрывается через ощущение хрупкой, живой и страдающей души.</p>
+              </div>
+            </div>
+          </div>
+          <div class="review-box">
+            <p>«...я не хотел и не просил многого, но главенствующим желанием было следующее — услышать душу Димы...»</p>
+            <p>«...и я получил, и я услышал, и я выведал...»</p>
+            <p>«...всё пространство импровизированной сцены заняла Душа Хаски...»</p>
+          </div>
+        </div>
+
+        <div class="album-block">
+          <div class="album-inner">
+            <div class="album-cover">
+              <img src="./photo2.jpg" alt="Обложка альбома ФУТУРОАРХАИКА — Boulevard Depo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="album-cover-placeholder" style="display:none">🌆</div>
+            </div>
+            <div class="album-body">
+              <div class="album-num">Альбом № 2</div>
+              <div class="album-title">ФУТУРОАРХАИКА — Boulevard Depo</div>
+              <div class="album-meta">
+                <p><strong>Исполнитель:</strong> Boulevard Depo</p>
+                <p><strong>Жанр:</strong> Экспериментальный рэп, трэп, психоделика</p>
+                <p><strong>Краткое описание:</strong> Экспериментальный, мрачный и тягучий альбом, который звучит как цельное атмосферное высказывание, а не просто набор треков.</p>
+                <p><strong>Общественное значение:</strong> Альбом повлиял на формирование «тёмного» направления в российском рэпе и показал, что отечественная сцена способна создавать экспериментальный материал.</p>
+                <p><strong>Заголовок рецензии:</strong> «Экспериментальный хаос и хтоническая мелодия»</p>
+                <p><strong>Автор рецензии:</strong> dardlee (РЗТ)</p>
+                <p><strong>О рецензии:</strong> Автор отмечает, что на «ФУТУРОАРХАИКЕ» Boulevard Depo снова звучит смело и новаторски, а сила пластинки раскрывается только в прослушивании её целиком.</p>
+              </div>
+            </div>
+          </div>
+          <div class="review-box">
+            <p>«Новый альбом с трудновыговариваемым названием „ФУТУРОАРХАИКА" получился экспериментальным.»</p>
+            <p>«Продакшн получился великолепным. Работа с битами просто колоссальная.»</p>
+            <p>«Это настоящий музыкальный экспириенс... пластинка ощущается по-настоящему самобытной.»</p>
+          </div>
+        </div>
+
+        <div class="album-block">
+          <div class="album-inner">
+            <div class="album-cover">
+              <img src="./photo3.jpg" alt="Обложка альбома WILD EA$T — Saluki" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="album-cover-placeholder" style="display:none">🌅</div>
+            </div>
+            <div class="album-body">
+              <div class="album-num">Альбом № 3</div>
+              <div class="album-title">WILD EA$T — Saluki</div>
+              <div class="album-meta">
+                <p><strong>Исполнитель:</strong> Saluki</p>
+                <p><strong>Жанр:</strong> Рэп, R&B, живые инструменты, фьюжн</p>
+                <p><strong>Краткое описание:</strong> Атмосферный альбом, в котором сочетаются живые инструменты, эмоциональная подача и личная память слушателя, связанная с городом, временем и внутренними переживаниями.</p>
+                <p><strong>Общественное значение:</strong> WILD EA$T стал точкой отсчёта для разговора о том, что российская музыка может быть сложной и многослойной.</p>
+                <p><strong>Заголовок рецензии:</strong> «Грааль отечественной музыки»</p>
+                <p><strong>Автор рецензии:</strong> NNNNNNNNNNNNNNN (РЗТ)</p>
+                <p><strong>О рецензии:</strong> Автор воспринимает WILD EA$T как важнейшую личную и музыкальную точку отсчёта, особо выделяя живые инструменты и необычное смешение жанров.</p>
+              </div>
+            </div>
+          </div>
+          <div class="review-box">
+            <p>«Для меня этот альбом не просто успешная работа, я считаю его гордостью нашей музыки.»</p>
+            <p>«Если я хочу послушать альбом — я включаю его с самого начала и слушаю до самого конца.»</p>
+            <p>«Данный альбом — грааль отечественной музыки, бесспорно.»</p>
+          </div>
+        </div>
+
+        <footer>← Вернитесь на главную или перейдите к следующему разделу через меню.</footer>
+      </section>
+
+      <section id="impact" class="page">
+        <div class="hero">
+          <div class="badge">Культурный контекст</div>
+          <h1>Как музыка влияет на общество</h1>
+          <p>Музыкальный альбом — это не просто набор песен. Это форма общественного высказывания, способная менять настроения, формировать культурную память и давать людям язык для разговора о важном.</p>
+        </div>
+
+        <div class="impact-list">
+          <article class="impact-item">
+            <div class="impact-icon">🧠</div>
+            <h3>Культурная память</h3>
+            <p>Музыкальные альбомы «запечатывают» настроение эпохи. Слушая их спустя годы, люди возвращаются в конкретное время и к конкретным переживаниям.</p>
+          </article>
+          <article class="impact-item">
+            <div class="impact-icon">💬</div>
+            <h3>Социальный диалог</h3>
+            <p>Тексты, обложки и поступки артистов открывают темы, о которых иначе сложно говорить. Музыка становится поводом для обсуждения свободы, цензуры и идентичности.</p>
+          </article>
+          <article class="impact-item">
+            <div class="impact-icon">🤝</div>
+            <h3>Объединение людей</h3>
+            <p>Альбомы становятся общей точкой соприкосновения: люди разного возраста слушают одну музыку, обсуждают её и через это лучше понимают друг друга.</p>
+          </article>
+          <article class="impact-item">
+            <div class="impact-icon">🎨</div>
+            <h3>Формирование сцены</h3>
+            <p>Значимые альбомы меняют то, как звучит вся сцена после них. Они открывают новые формы, идеи и подходы к продакшну.</p>
+          </article>
+        </div>
+
+        <div class="impact-quote">
+          <p>«Музыка способна выразить то, что не поддаётся словам, и то, о чём невозможно молчать.»</p>
+          <cite>— Виктор Гюго</cite>
+        </div>
+
+        <div class="section">
+          <h2>Вывод по разделу</h2>
+          <p>Каждый из трёх разобранных альбомов оказался значимым не только внутри музыкальной сцены, но и в более широком культурном контексте. Они дали слушателям способ говорить о свободе, личной памяти и самобытности.</p>
+        </div>
+
+        <footer>← Вернитесь на главную или перейдите к следующему разделу через меню.</footer>
+      </section>
+
+      <section id="usmusic" class="page">
+  <div class="hero">
+    <div class="badge">Личный взгляд команды</div>
+    <h1>Наши музыкальные предпочтения</h1>
+    <p>В этом разделе мы собрали треки, которые особенно близки нам по атмосфере, звучанию и личным ассоциациям. Для нас музыка важна не только как развлечение, но и как способ почувствовать настроение, время и внутреннее состояние человека.</p>
+  </div>
+ 
+  <div class="section">
+    <h2>Любимые треки участников</h2>
+    <p class="section-lead">Ниже представлены музыкальные предпочтения каждого участника команды и краткое объяснение выбора.</p>
+
+    <div class="impact-list">
+      <article class="impact-item">
+        <div class="impact-icon">🖥️</div>
+        <h3>Лев</h3>
+        <p><strong>1. Sleep Mode — onda andar</strong><br>Мне нравится этот трек за его атмосферное звучание, плавное настроение и ощущение погружения. В нём чувствуется спокойствие, но при этом есть внутренняя глубина, из-за которой хочется переслушивать его снова.</p>
+        <p><strong>2. Ветром снегом зноем — Хаски</strong><br>Этот трек нравится мне за сильную подачу, необычные образы и напряжённую эмоциональную энергию. В нём чувствуется характер, личное высказывание и особая мрачная эстетика, которая мне близка.</p>
+        <p><strong>3. Бойсбэнд — Pharaoh</strong><br>Мне нравится этот трек из-за его уверенного звучания, запоминающейся атмосферы и стиля. В нём сочетаются современный звук, харизма исполнителя и настроение, которое хорошо передаёт определённое состояние.</p>
+      </article>
+
+      <article class="impact-item">
+        <div class="impact-icon">✍️</div>
+        <h3>Илья</h3>
+        <p><strong>1. Loqieman — солнечная сторона</strong><br>Мне нравится этот трек за лёгкое и тёплое звучание. В нём чувствуется приятная атмосфера, спокойное настроение и ощущение чего-то светлого, из-за чего его хочется слушать снова.</p>
+        <p><strong>2. Aquakey  — Hate everything about you</strong><br>Мне нравится этот трек за сильную эмоциональную подачу и выразительное звучание. В нём чувствуется напряжение, характер и энергия, которые делают его запоминающимся и цепляющим.
+</p>
+        <p><strong>3. Платина — Завидуют</strong><br>Мне нравится этот трек за уверенный стиль, современное звучание и яркую подачу. В нём хорошо сочетаются настроение, харизма исполнителя и музыка, которая сразу создаёт нужную атмосферу.</p>
+      </article>
+    </div>
+  </div>
+  <div class="section team-covers">
+  <h2>Обложки исполнителей</h2>
+  <p class="section-lead">Общая подборка обложек исполнителей, чьи треки входят в наши личные музыкальные предпочтения.</p>
+
+  <div class="team-covers-image">
+    <img src="photo4.jpg" alt="Коллаж с обложками исполнителей, выбранных участниками команды">
+  </div>
+    </div>
+
+  <div class="section">
+    <h2>Что объединяет наш выбор</h2>
+    <p class="section-lead">Несмотря на разные вкусы, нас объединяет интерес к музыке с яркой атмосферой, сильной подачей и запоминающимся внутренним настроением.</p>
+    <div class="page-links">
+      <div class="page-link">
+        <strong>Атмосфера</strong>
+        <span>Нам важны треки, которые создают цельное настроение и оставляют эмоциональный след.</span>
+      </div>
+      <div class="page-link">
+        <strong>Личное восприятие</strong>
+        <span>Мы ценим музыку, которая связывается с переживаниями, воспоминаниями и личным опытом.</span>
+      </div>
+      <div class="page-link">
+        <strong>Самобытность</strong>
+        <span>Нас привлекают исполнители с узнаваемым стилем, необычной подачей и собственным языком.</span>
+      </div>
+      <div class="page-link">
+        <strong>Эмоциональная сила</strong>
+        <span>Музыка нравится нам тогда, когда она не просто звучит, а действительно что-то передаёт.</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>← Вернитесь на главную или перейдите к следующему разделу через меню.</footer>
+          </section>
+
+      <section id="roles" class="page">
+        <div class="hero">
+          <div class="badge">Командная работа</div>
+          <h1>Распределение ролей в команде</h1>
+          <p>При работе над проектом каждый участник команды отвечал за свой блок задач. Такой подход позволил вести работу параллельно и завершить проект в срок.</p>
+        </div>
+
+        <div class="roles-grid">
+          <article class="role-card">
+            <div class="role-icon"></div>
+            <h2>Илья✍️</h2>
+            <h3>Писатель отчёта и Выступающий</h3>
+            <p>Собирал информацию об альбомах с сайта РЗТ, составлял описания и краткие пересказы рецензий, а также отвечал за итоговый письменный отчёт. Готовил защитное слово и представлял проект перед аудиторией, формулируя ответы на вопросы по теме и результатам работы.</p>
+          </article>
+          <article class="role-card">
+            <div class="role-icon"></div>
+            <h2>Лев 🖥️</h2>
+            <h3>Дизайнер и Сборщик сайта</h3>
+            <p>Разрабатывал визуальную концепцию сайта: цвета, шрифты, расположение блоков и обработку обложек для проекта. Верстал сайт на HTML, CSS и JavaScript, настраивал навигацию между разделами, адаптивность и смену темы.</p>
+          </article>
+        </div>
+
+        <footer>Учебный сайт — «Ценные альбомы для общества». Все материалы собраны вручную с сайта РЗТ.</footer>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const pages = document.querySelectorAll('.page');
+      const navLinks = document.querySelectorAll('nav a');
+      const allLinks = document.querySelectorAll('nav a, .page-link[href]');
+
+      function showPage(hash) {
+        const id = (hash && hash !== '#') ? hash.slice(1) : 'home';
+        pages.forEach(p => p.classList.toggle('active', p.id === id));
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      allLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            e.preventDefault();
+            history.replaceState(null, '', href);
+            showPage(href);
+          }
+        });
+      });
+
+      window.addEventListener('hashchange', () => showPage(location.hash));
+      showPage(location.hash || '#home');
+    })();
+
+    (function () {
+      const btn = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let mode = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', mode);
+      btn.textContent = mode === 'dark' ? '☀️' : '🌙';
+      btn.addEventListener('click', () => {
+        mode = mode === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', mode);
+        btn.textContent = mode === 'dark' ? '☀️' : '🌙';
+      });
+    })();
+  </script>
+</body>
+</html>
